@@ -1,9 +1,9 @@
 ###
-### A complete description of a Prefect Deployment for flow 'hello-world'
+### A complete description of a Prefect Deployment for flow 'extract'
 ###
-name: test-deployment
+name: demo_deployment
 description: null
-version: 2087ef0fa4a7a218fa8152cf8007f46a
+version: 419009ce8a35fc9e6f5c932312128fbc
 # The work queue that will handle this deployment's runs
 work_queue_name: default
 work_pool_name: null
@@ -26,26 +26,21 @@ infrastructure:
 ###
 ### DO NOT EDIT BELOW THIS LINE
 ###
-flow_name: hello-world
+flow_name: extract
 manifest_path: null
-storage:
-  repository: https://github.com/elguel/testingprefect.git
-  reference: null
-  access_token: null
-  include_git_objects: true
-  _block_document_id: da77657b-048d-46ae-ae82-e54a9ef58f36
-  _block_document_name: prefecttest
-  _is_anonymous: false
-  block_type_slug: github
-  _block_type_slug: github
-path: ''
-entrypoint: prefect-env/hello.py:hello_world
+storage: null
+path: /Users/elinagundyreva/Documents/DE_Google_trends
+entrypoint: prefect-env/hello.py:extract
 parameter_openapi_schema:
   title: Parameters
   type: object
-  properties: {}
+  properties:
+    playlist_link:
+      title: playlist_link
+      default: https://open.spotify.com/playlist/37i9dQZEVXbNG2KDcFcKOF?si=1333723a6eff4b7f
+      position: 0
   required: null
   definitions: null
-timestamp: '2024-01-03T08:31:06.722669+00:00'
+timestamp: '2024-01-03T09:48:41.650947+00:00'
 triggers: []
 enforce_parameter_schema: null

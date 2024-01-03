@@ -1,38 +1,14 @@
-from prefect import flow, task
-from prefect.blocks.system import String
+#Authentication - without user
 from credentials import cid, secret
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-import pandas as pd 
+import pandas as pd
 
-#string_block = String.load("future-nba-champs")
-
-#@task
-#def create_message():
-#    msg=string_block.value
-#    return msg
-#
-#@flow
-#def something_else():
-#    result = 10
-#    return result
-
-#@flow
-#def hello_world():
-#    sub_flow_message=something_else()
-#    task_message = create_message()
-#    new_message=task_message+str(sub_flow_message)
-#    print(new_message)
-#    #with open('readme.txt', 'w') as f:
-#    #    f.write('readme')
-
-@task
 def spotify_connect():
   client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
   sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
   return sp
 
-@flow
 def extract(playlist_link = "https://open.spotify.com/playlist/37i9dQZEVXbNG2KDcFcKOF?si=1333723a6eff4b7f"):
   sp=spotify_connect()
   playlist_URI = playlist_link.split("/")[-1].split("?")[0]
@@ -82,3 +58,4 @@ def extract(playlist_link = "https://open.spotify.com/playlist/37i9dQZEVXbNG2KDc
 
 if __name__ == "__main__":
     df=extract()
+    print(df.head())
