@@ -5,26 +5,10 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import pandas as pd 
 
-#string_block = String.load("future-nba-champs")
+from prefect.blocks.system import Secret
 
-#@task
-#def create_message():
-#    msg=string_block.value
-#    return msg
-#
-#@flow
-#def something_else():
-#    result = 10
-#    return result
-
-#@flow
-#def hello_world():
-#    sub_flow_message=something_else()
-#    task_message = create_message()
-#    new_message=task_message+str(sub_flow_message)
-#    print(new_message)
-#    #with open('readme.txt', 'w') as f:
-#    #    f.write('readme')
+#cid = Secret.load("cid")
+#secret = Secret.load("client-secret")
 
 @task
 def spotify_connect():
@@ -82,3 +66,4 @@ def extract(playlist_link = "https://open.spotify.com/playlist/37i9dQZEVXbNG2KDc
 
 if __name__ == "__main__":
     df=extract()
+    print(df)
